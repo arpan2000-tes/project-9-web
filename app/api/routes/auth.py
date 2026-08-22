@@ -6,6 +6,6 @@ from dependencies import login
 routes = APIRouter()
 
 @routes.post("/signin")
-def signin (users: Annotated[Depends(login)] ):
+def signin (users: Annotated[dict,Depends(login)] ):
     if users != user :
         return HTTPException (status_code=401, detail="wrong email or password")
