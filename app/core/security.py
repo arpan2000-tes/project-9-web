@@ -1,7 +1,8 @@
 import bcrypt
 
 def hash_any(key: str):
-    hashed = bcrypt.hashpw(key,bcrypt.gensalt(14))
+    bytes_key = key.encode('utf-8')
+    hashed = bcrypt.hashpw(bytes_key,bcrypt.gensalt(14))
     return hashed
 
 def hasing_pass(password: str):
