@@ -1,2 +1,14 @@
-from sqlmodel import Session, create_engine , select
+import os
+import dotenv
 
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+dotenv.load_dotenv()
+URL_DATABASE_NEON = os.getenv("DATABASE_URL")
+
+engine = create_engine(URL_DATABASE_NEON)
+sessionlocal = sessionmaker(autocommit=False, autoflush= False, bind=engine)
+
+base = declarative_base()

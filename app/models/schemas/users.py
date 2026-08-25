@@ -1,6 +1,5 @@
-import datetime
-
-from pydantic import BaseModel, EmailStr, BaseConfig
+from pydantic import BaseModel, EmailStr
+from sqlalchemy.orm import relationship
 from enum import Enum
 
 
@@ -12,6 +11,7 @@ class UserRoles(str, Enum):
    owner = "owner"
 
 class Users(BaseModel):
+   __table__ = "Users"
    name : str
    email : EmailStr
    password : str
