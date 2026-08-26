@@ -3,4 +3,8 @@ from app.api.routes import API_Routes
 
 app = FastAPI()
 
-app.include_router(API_Routes, prefix="api/v1")
+@app.get("/")
+def get():
+    return {"hello": "world"}
+
+app.include_router(API_Routes, prefix="/api/v1")

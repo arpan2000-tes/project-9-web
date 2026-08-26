@@ -1,7 +1,7 @@
-from pydantic import BaseModel, EmailStr
-from sqlalchemy.orm import relationship
+from pydantic import BaseModel ,EmailStr
 from enum import Enum
 
+from app.database.db import base
 
 class UserRoles(str, Enum):
    pelanggan = "pelanggan"
@@ -11,12 +11,12 @@ class UserRoles(str, Enum):
    owner = "owner"
 
 class Users(BaseModel):
-   __table__ = "Users"
    name : str
    email : EmailStr
    password : str
    is_verified: bool = False
    roles : UserRoles = UserRoles.pelanggan
+   
       
 class Login(BaseModel):
    name : str

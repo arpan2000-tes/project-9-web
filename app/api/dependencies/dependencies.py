@@ -1,8 +1,12 @@
 from sqlalchemy.orm import Session
-from database import see
+from app.database.db import sessionlocal
 
 def get_db() :
-    with Session()
+    db = sessionlocal()
+    try:
+        yield db
+    finally :
+        db.close()
 
 def login (name : str , email : str , password : str ):
     return name, email , password_hash
