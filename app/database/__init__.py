@@ -1,1 +1,1 @@
-from .db import base
+from .base import Base
